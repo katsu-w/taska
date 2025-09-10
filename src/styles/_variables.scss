@@ -18,12 +18,10 @@
 	--font-family-base: 'Inter', sans-serif;
 	--font-family-accent: 'Kumbh Sans', sans-serif;
 	
-	--container-width: #{rem(1600)};
-	--container-padding-x: #{rem(16)};
+	--container-width: #{rem(1110)};
+	--container-padding-x: #{rem(0)};
 	
 	--transition-duration: 0.2s;
-	
-	--100vw: calc(100vw - var(--scrollbar-width));
 	
 	@include laptop {
 		--container-width: #{rem(1280)};
