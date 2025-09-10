@@ -2,21 +2,10 @@
 
 :root {
 	--color-light: #FFFFFF;
-	
+	--color-accent: #6e34c7;
 	--color-dark: #141414;
 	
-	--gradient: linear-gradient(
-			45deg,
-			var(--color-dark-15) 64%,
-			var(--color-accent) 136%
-	);
-	
-	--border: #{rem(1)} solid var(--color-dark-15);
-	
 	--shadow: 0 0 0 #{rem(3)} #191919;
-	
-	--font-family-base: 'Inter', sans-serif;
-	--font-family-accent: 'Kumbh Sans', sans-serif;
 	
 	--container-width: #{rem(1110)};
 	--container-padding-x: #{rem(0)};
