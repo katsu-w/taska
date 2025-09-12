@@ -1,8 +1,53 @@
-.header {
+@use '/src/styles/helpers' as *;
 
+.header {
+	padding-block: rem(20);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	box-shadow: 0 3px 6px rgba(110, 52, 199, 0.3);
+	
+	&__inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		
+		@include laptop {
+			padding-inline: rem(12);
+		}
+	}
 }
 
 .logo {
 	color: var(--color-font);
 	text-decoration: none;
+	font-size: rem(28);
+}
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: rem(20);
+	
+	&__search, &__filter {
+		background-color: var(--color-background);
+		outline: none;
+		border: var(--border);
+		border-radius: rem(12);
+		color: var(--color-font);
+		transition: var(--transition-duration);
+		height: rem(42);
+		padding-inline: rem(12);
+		
+		&:focus {
+			box-shadow: 0 0 0 2px rgba(110, 52, 199, 0.5);
+		}
+	}
+	
+	&__filter {
+		&:focus {
+			border-radius: rem(12) rem(12) 0 0;
+		}
+	}
 }
