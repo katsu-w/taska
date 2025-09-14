@@ -6,6 +6,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+	background-color: var(--color-background);
 	box-shadow: 0 3px 6px rgba(110, 52, 199, 0.3);
 	
 	&__inner {
@@ -36,6 +37,7 @@
 		border: var(--border);
 		border-radius: rem(12);
 		color: var(--color-font);
+		font-size: rem(18);
 		transition: var(--transition-duration);
 		height: rem(42);
 		padding-inline: rem(12);
