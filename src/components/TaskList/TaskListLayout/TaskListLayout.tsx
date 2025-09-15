@@ -1,9 +1,11 @@
 import './TaskListLayout.scss';
+import Loader from '../../Loader';
 
 export function TaskListLayout() {
 	
 	return (
 		<main className='tasklist container'>
+			<Loader />
 			<div className="card">
 				<div className="card__details">
 					<input
