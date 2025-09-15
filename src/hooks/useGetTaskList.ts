@@ -10,8 +10,8 @@ export const useGetTaskList = () => {
 		fetch('https://jsonplaceholder.typicode.com/todos')
 			.then((loadedData) => loadedData.json())
 			.then((loadedTaskList) => setTaskList(loadedTaskList))
-			.catch(e => console.log(e))
-			.finally(() => setIsLoading(false));
+			.finally(() => setIsLoading(false))
+			.catch(e => console.log(e));
 	}, []);
 	
 	return {taskList, isLoading};

@@ -7,41 +7,9 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: rem(20);
+	
+	@include mobile {
+		grid-template-columns: 1fr;
+	}
 }
 
-.card {
-	background-color: var(--color-gray);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: rem(12);
-	border-radius: rem(12);
-	gap: rem(10);
-	
-	&__details {
-		display: flex;
-		align-items: center;
-		gap: rem(10);
-	}
-	
-	&__status {
-		min-width: rem(20);
-		min-height: rem(20);
-		margin: 0;
-		cursor: pointer;
-	}
-	
-	&__title {
-		line-height: 120%;
-	}
-	
-	&__remove-btn {
-		background-color: var(--color-secondary);
-		color: var(--color-font);
-		font-size: rem(18);
-		padding-inline: rem(12);
-		border: none;
-		border-radius: rem(12);
-		outline: none;
-	}
-}
