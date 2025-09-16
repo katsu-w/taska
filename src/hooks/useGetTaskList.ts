@@ -6,7 +6,7 @@ export const useGetTaskList = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/todos')
+		fetch('http://localhost:3000/tasks')
 			.then((loadedData) => loadedData.json())
 			.then((loadedTaskList) => setTaskList(loadedTaskList))
 			.finally(() => setIsLoading(false))
