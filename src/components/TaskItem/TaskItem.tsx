@@ -1,4 +1,5 @@
 import './TaskItem.scss';
+import { useState } from 'react';
 
 interface ITaskItemProps {
 	id: number,
@@ -8,6 +9,7 @@ interface ITaskItemProps {
 
 export function TaskItem(props: ITaskItemProps) {
 	const {id, status, title} = props;
+	const [statusValue, setStatusValue] = useState<boolean>(status);
 	
 	return (
 		<div className="task">
@@ -17,7 +19,7 @@ export function TaskItem(props: ITaskItemProps) {
 					id={`task-${id}-status`}
 					name={`task-${id}-status`}
 					type="checkbox"
-					checked={status}
+					checked={statusValue}
 				/>
 				<p className="task__title">{title}</p>
 			</div>
