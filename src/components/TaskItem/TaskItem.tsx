@@ -1,15 +1,15 @@
 import './TaskItem.scss';
-import { useState } from 'react';
 
 interface ITaskItemProps {
 	id: number,
 	status: boolean,
 	title: string,
+	isUpdating: boolean,
+	changeCompletion: (id: number, prevStatus: boolean) => void
 }
 
 export function TaskItem(props: ITaskItemProps) {
-	const {id, status, title} = props;
-	const [statusValue, setStatusValue] = useState<boolean>(status);
+	const {id, status, title, isUpdating, changeCompletion} = props;
 	
 	return (
 		<div className="task">
@@ -19,7 +19,9 @@ export function TaskItem(props: ITaskItemProps) {
 					id={`task-${id}-status`}
 					name={`task-${id}-status`}
 					type="checkbox"
-					checked={statusValue}
+					checked={status}
+					onClick={() => changeCompletion(id, status)}
+					disabled={isUpdating}
 				/>
 				<p className="task__title">{title}</p>
 			</div>
