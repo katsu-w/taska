@@ -13,5 +13,5 @@ export const useGetTaskList = () => {
 			.catch(e => console.log(e));
 	}, []);
 	
-	return {taskList, isLoading};
+	return {taskList, setTaskList, isLoading};
 }

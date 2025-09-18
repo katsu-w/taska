@@ -6,10 +6,12 @@ import TaskItem from '../../TaskItem';
 interface ITaskListLayoutProps {
 	taskList: ITask[],
 	isLoading: boolean,
+	isUpdating: boolean,
+	changeCompletion: (id: number, prevStatus: boolean) => void
 }
 
 export function TaskListLayout(props: ITaskListLayoutProps) {
-	const { taskList, isLoading } = props;
+	const { taskList, isLoading, isUpdating, changeCompletion } = props;
 	
 	return (
 		<main className='tasklist container'>
@@ -20,7 +22,7 @@ export function TaskListLayout(props: ITaskListLayoutProps) {
 					<h2>Список дел пуст</h2>
 					:
 					taskList.map((task) => {
-						return <TaskItem key={task.id} id={task.id} status={task.completed} title={task.title} />
+						return <TaskItem isUpdating={isUpdating} changeCompletion={changeCompletion} key={task.id} id={task.id} status={task.completed} title={task.title} />
 					})
 			}
 		</main>
