@@ -1,7 +1,7 @@
 import type { ITask } from '../types/types.ts';
-import { useState } from 'react';
+import { type SetStateAction, useState } from 'react';
 
-export const useRequestChangeCompletion = (setTaskList: (value: (((prevState: ITask[]) => ITask[]) | ITask[])) => void) => {
+export const useRequestChangeCompletion = (setTaskList: React.Dispatch<SetStateAction<ITask[]>>) => {
 	const [isUpdating, setIsUpdating] = useState(false);
 	
 	const requestChangeCompletion = (id: number, prevStatus: boolean) => {

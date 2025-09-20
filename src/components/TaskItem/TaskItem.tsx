@@ -1,15 +1,20 @@
 import './TaskItem.scss';
+import type { SetStateAction } from 'react';
+import type { ITask } from '../../types/types.ts';
+import { useRequestChangeCompletion, useRequestDeleteTask } from '../../hooks';
 
 interface ITaskItemProps {
 	id: number,
 	status: boolean,
 	title: string,
-	isUpdating: boolean,
-	changeCompletion: (id: number, prevStatus: boolean) => void
+	setTaskList: React.Dispatch<SetStateAction<ITask[]>>
 }
 
 export function TaskItem(props: ITaskItemProps) {
-	const {id, status, title, isUpdating, changeCompletion} = props;
+	const {id, status, title, setTaskList} = props;
+	
+	const {requestChangeCompletion, isUpdating} = useRequestChangeCompletion(setTaskList);
+	const {requestDeleteTask, isDeleting} = useRequestDeleteTask(setTaskList);
 	
 	return (
 		<div className="task">
@@ -20,12 +25,12 @@ export function TaskItem(props: ITaskItemProps) {
 					name={`task-${id}-status`}
 					type="checkbox"
 					checked={status}
-					onChange={() => changeCompletion(id, status)}
+					onChange={() => requestChangeCompletion(id, status)}
 					disabled={isUpdating}
 				/>
 				<p className="task__title">{title}</p>
 			</div>
-			<button className="task__remove-btn btn">Удалить</button>
+			<button onClick={() => requestDeleteTask(id)} disabled={isDeleting} className="task__remove-btn btn">Удалить</button>
 		</div>
 	);
 }

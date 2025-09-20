@@ -1,10 +1,8 @@
 import TaskListLayout from './TaskListLayout';
-import { useRequestGetTaskList } from '../../hooks/useRequestGetTaskList.ts';
-import { useRequestChangeCompletion } from '../../hooks/useRequestChangeCompletion.ts';
+import { useRequestGetTaskList } from '../../hooks';
 
 export function TaskList() {
-	const {taskList, setTaskList, isLoading} = useRequestGetTaskList();
-	const {requestChangeCompletion, isUpdating} = useRequestChangeCompletion(setTaskList);
+	const {taskList, isLoading, setTaskList} = useRequestGetTaskList();
 	
-	return <TaskListLayout changeCompletion={requestChangeCompletion} taskList={taskList} isLoading={isLoading} isUpdating={isUpdating} />;
+	return <TaskListLayout setTaskList={setTaskList} taskList={taskList} isLoading={isLoading} />;
 }
