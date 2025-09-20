@@ -10,5 +10,21 @@
 	@include mobile {
 		grid-template-columns: 1fr;
 	}
+	
+	&__add-btn {
+		position: fixed;
+		right: 5%;
+		bottom: 5%;
+		width: 8%;
+		aspect-ratio: 1 / 1;
+		font-size: rem(60);
+		border-radius: 50%;
+		
+		@include mobile {
+			width: 90%;
+			aspect-ratio: 1 / 0.15;
+			border-radius: rem(15);
+		}
+	}
 }
 

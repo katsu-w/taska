@@ -25,6 +25,16 @@ export function TaskListLayout(props: ITaskListLayoutProps) {
 						return <TaskItem setTaskList={setTaskList} key={task.id} id={task.id} status={task.completed} title={task.title} />
 					})
 			}
+			{ isLoading ? 
+				null
+				:
+				<button
+					className="btn tasklist__add-btn"
+					type="button"
+				>
+					+
+				</button>
+			}
 		</main>
 	);
 }

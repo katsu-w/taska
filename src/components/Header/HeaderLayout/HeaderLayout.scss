@@ -10,13 +10,19 @@
 	background-color: var(--color-background);
 	box-shadow: 0 3px 6px rgba(110, 52, 199, 0.3);
 	
+	@include mobile {
+		padding-block: rem(10);
+	}
+	
 	&__inner {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		
-		@include laptop {
-			padding-inline: rem(12);
+		@include mobile {
+			flex-direction: column;
+			column-gap: rem(15);
+			align-items: flex-start;
 		}
 	}
 }
@@ -43,8 +49,18 @@
 		height: rem(42);
 		padding-inline: rem(12);
 		
+		@include mobile-s {
+			padding-inline: rem(5);
+		}
+		
 		&:focus {
 			box-shadow: 0 0 0 2px rgba(110, 52, 199, 0.5);
+		}
+	}
+	
+	&__search {
+		@include mobile-s {
+			width: 100%;
 		}
 	}
 	

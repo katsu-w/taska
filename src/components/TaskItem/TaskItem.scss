@@ -27,12 +27,7 @@
 	}
 	
 	&__remove-btn {
-		background-color: var(--color-secondary);
-		color: var(--color-font);
 		font-size: rem(16);
-		padding-inline: rem(12);
-		border: none;
-		border-radius: rem(12);
-		outline: none;
+		padding: rem(8) rem(12);
 	}
 }

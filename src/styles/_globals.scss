@@ -8,4 +8,22 @@
 body {
 	font-size: rem(22);
 	margin-top: rem(82);
+	
+	@include mobile-s {
+		font-size: rem(18);
+	}
+}
+
+option {
+	font-size: rem(16);
+}
+
+.btn {
+	background-color: var(--color-secondary);
+	color: var(--color-font);
+	border: none;
+	border-radius: rem(12);
+	outline: none;
+	line-height: 1;
+	white-space: nowrap;
 }
