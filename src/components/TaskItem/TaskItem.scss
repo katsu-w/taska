@@ -8,24 +8,23 @@
 	padding: rem(12);
 	border-radius: rem(12);
 	gap: rem(10);
-	
+
 	&__details {
 		display: flex;
 		align-items: center;
 		gap: rem(10);
 	}
-	
+
 	&__status {
 		min-width: rem(20);
 		min-height: rem(20);
 		margin: 0;
-		cursor: pointer;
 	}
-	
+
 	&__title {
 		line-height: 120%;
 	}
-	
+
 	&__remove-btn {
 		font-size: rem(16);
 		padding: rem(8) rem(12);
