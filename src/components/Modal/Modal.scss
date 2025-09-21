@@ -1,3 +1,5 @@
+@use '/src/styles/helpers' as *;
+
 .modal {
 	position: fixed;
 	top: 0;
@@ -6,4 +8,14 @@
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.3);
 	z-index: 6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form {
+	padding: rem(20);
+	background-color: var(--color-background);
+	color: var(--color-font);
+	border-radius: rem(15);
 }

@@ -10,7 +10,9 @@ export function Modal(props: IModalProps) {
 
 	return (
 		<div className="modal" onClick={() => openModal((state) => !state)}>
-			<form action="">hehe</form>
+			<form className="form" onClick={(e) => e.stopPropagation()}>
+				<input id="asd" name="asd" type="text" />
+			</form>
 		</div>
 	);
 }
