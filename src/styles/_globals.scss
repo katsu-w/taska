@@ -39,7 +39,13 @@ input, select {
 
 .btn {
 	background-color: var(--color-secondary);
-	border: none;
+	border: var(--border);
+	border-color: transparent;
+	
+	&:hover {
+		background-color: transparent;
+		border: var(--border);
+	}
 }
 
 .input,
@@ -47,6 +53,10 @@ input, select {
 	border: var(--border);
 	height: rem(42);
 	padding-inline: rem(12);
+	
+	&:hover {
+		border-color: var(--color-accent);
+	}
 	
 	@include mobile-s {
 		padding-inline: rem(5);

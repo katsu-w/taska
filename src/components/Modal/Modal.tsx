@@ -11,7 +11,7 @@ export function Modal(props: IModalProps) {
 	return (
 		<div className="modal" onClick={() => openModal((state) => !state)}>
 			<form className="form" onClick={(e) => e.stopPropagation()}>
-				<h3 className="form__title">Add new task</h3>
+				<h3 className="form__title">Add new Task</h3>
 				<input className="form__input input" id="addTask" name="addTask" type="text" />
 				<div className="form__controls">
 					<button
