@@ -18,12 +18,37 @@ option {
 	font-size: rem(16);
 }
 
-.btn {
-	background-color: var(--color-secondary);
+input, select {
+	background-color: var(--color-background);
 	color: var(--color-font);
-	border: none;
+}
+
+.btn, .input, .select {
+	color: var(--color-font);
+	font-size: rem(18);
 	border-radius: rem(12);
 	outline: none;
 	line-height: 1;
 	white-space: nowrap;
+	transition: var(--transition-duration);
+	
+	&:focus {
+		box-shadow: var(--shadow-focus);
+	}
+}
+
+.btn {
+	background-color: var(--color-secondary);
+	border: none;
+}
+
+.input,
+.select {
+	border: var(--border);
+	height: rem(42);
+	padding-inline: rem(12);
+	
+	@include mobile-s {
+		padding-inline: rem(5);
+	}
 }
