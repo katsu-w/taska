@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Перенести TODO на JSON-Server",
-      "completed": false
+      "completed": true
     },
     {
       "id": 2,
@@ -14,6 +14,21 @@
       "id": 3,
       "title": "Наесться пиццей",
       "completed": true
+    },
+    {
+      "title": "Реализовать поиск",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "title": "Реализовать сортировку",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "title": "Перенести всё на Firebase",
+      "completed": false,
+      "id": 6
     }
   ]
 }

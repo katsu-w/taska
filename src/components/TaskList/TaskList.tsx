@@ -1,13 +1,16 @@
 import TaskListLayout from './TaskListLayout';
-import { useRequestGetTaskList } from '../../hooks';
 import type { SetStateAction } from 'react';
+import type { ITask } from '../../types/types.ts';
 
-export function TaskList({
-	openModal,
-}: {
+interface ITaskListProps {
+	taskList: ITask[];
+	isLoading: boolean;
+	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
 	openModal: React.Dispatch<SetStateAction<boolean>>;
-}) {
-	const { taskList, isLoading, setTaskList } = useRequestGetTaskList();
+}
+
+export function TaskList(props: ITaskListProps) {
+	const { openModal, taskList, isLoading, setTaskList } = props;
 
 	return (
 		<TaskListLayout
