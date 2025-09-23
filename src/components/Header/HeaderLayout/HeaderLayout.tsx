@@ -3,10 +3,12 @@ import './HeaderLayout.scss';
 interface IHeaderLayoutProps {
 	searchValue: string;
 	searchHandler: (value: string) => void;
+	selectValue: string;
+	changeSelectHandler: (value: string) => void;
 }
 
 export function HeaderLayout(props: IHeaderLayoutProps) {
-	const { searchValue, searchHandler } = props;
+	const { searchValue, searchHandler, selectValue, changeSelectHandler } = props;
 
 	return (
 		<header className="header">
@@ -23,7 +25,13 @@ export function HeaderLayout(props: IHeaderLayoutProps) {
 						value={searchValue}
 						onChange={(e) => searchHandler(e.target.value)}
 					/>
-					<select name="filter" id="filter" className="controls__filter select">
+					<select
+						value={selectValue}
+						onChange={(e) => changeSelectHandler(e.target.value)}
+						name="filter"
+						id="filter"
+						className="controls__filter select"
+					>
 						<option value="default">По умолчанию</option>
 						<option value="alphabet">По алфавиту</option>
 					</select>
