@@ -1,6 +1,13 @@
 import './HeaderLayout.scss';
 
-export function HeaderLayout() {
+interface IHeaderLayoutProps {
+	searchValue: string;
+	searchHandler: (value: string) => void;
+}
+
+export function HeaderLayout(props: IHeaderLayoutProps) {
+	const { searchValue, searchHandler } = props;
+
 	return (
 		<header className="header">
 			<div className="header__inner container">
@@ -13,6 +20,8 @@ export function HeaderLayout() {
 						id="search"
 						name="search"
 						type="search"
+						value={searchValue}
+						onChange={(e) => searchHandler(e.target.value)}
 					/>
 					<select name="filter" id="filter" className="controls__filter select">
 						<option value="default">По умолчанию</option>

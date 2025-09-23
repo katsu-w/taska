@@ -46,6 +46,11 @@ input, select {
 		background-color: transparent;
 		border: var(--border);
 	}
+	
+	&[disabled] {
+		background-color: gray;
+		border-color: gray;
+	}
 }
 
 .input,

@@ -17,18 +17,13 @@
     },
     {
       "title": "Реализовать поиск",
-      "completed": false,
+      "completed": true,
       "id": 4
     },
     {
       "title": "Реализовать сортировку",
       "completed": false,
       "id": 5
-    },
-    {
-      "title": "Перенести всё на Firebase",
-      "completed": false,
-      "id": 6
     }
   ]
 }

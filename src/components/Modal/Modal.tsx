@@ -19,10 +19,7 @@ export function Modal(props: IModalProps) {
 		e.preventDefault();
 
 		if (inputValue.length > 0) {
-			requestAddNewTask(inputValue);
-
-			openModal((state) => !state);
-			return;
+			return requestAddNewTask(inputValue);
 		}
 
 		setError('Введите текст');
