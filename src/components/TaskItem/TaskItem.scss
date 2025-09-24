@@ -23,6 +23,10 @@
 
 	&__title {
 		line-height: 120%;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		overflow: hidden;
 	}
 
 	&__remove-btn {
