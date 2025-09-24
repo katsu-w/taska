@@ -9,8 +9,8 @@ export const useRequestGetTaskList = () => {
 		fetch('http://localhost:3000/tasks')
 			.then((loadedData) => loadedData.json())
 			.then((loadedTaskList) => setTaskList(loadedTaskList))
-			.finally(() => setIsLoading(false))
-			.catch((e) => console.log(e));
+			.catch((e) => console.log(e))
+			.finally(() => setIsLoading(false));
 	}, []);
 
 	return { taskList, setTaskList, isLoading };

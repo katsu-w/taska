@@ -4,7 +4,7 @@ import { useState } from 'react';
 export const useFilter = (data: ITask[]) => {
 	const [selectValue, setSelectValue] = useState<'default' | 'alphabet'>('default');
 
-	const toFiltered = (value) => {
+	const toFiltered = (value: 'default' | 'alphabet') => {
 		switch (value) {
 			case 'default':
 				return data.sort((a, b) => a.id - b.id);
@@ -18,7 +18,7 @@ export const useFilter = (data: ITask[]) => {
 
 	const filteredData = toFiltered(selectValue);
 
-	const changeSelectHandler = (value) => {
+	const changeSelectHandler = (value: 'default' | 'alphabet') => {
 		setSelectValue(value);
 	};
 

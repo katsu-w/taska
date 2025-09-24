@@ -19,6 +19,7 @@ export const useRequestAddNewTask = (
 		})
 			.then((rawResponse) => rawResponse.json())
 			.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
+			.catch((e) => console.log(e))
 			.finally(() => {
 				setIsUploading(false);
 			});

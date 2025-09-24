@@ -16,6 +16,7 @@ export const useRequestDeleteTask = (
 					return prevTaskList.filter((task) => task.id !== id);
 				});
 			})
+			.catch((e) => console.log(e))
 			.finally(() => setIsDeleting(false));
 	};
 

@@ -22,6 +22,7 @@ export const useRequestChangeCompletion = (
 					prevTaskList.map((task) => (task.id === updatedTask.id ? updatedTask : task)),
 				),
 			)
+			.catch((e) => console.log(e))
 			.finally(() => {
 				setIsUpdating(false);
 			});
