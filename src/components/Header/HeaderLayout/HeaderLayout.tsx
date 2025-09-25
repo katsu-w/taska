@@ -22,6 +22,7 @@ export function HeaderLayout(props: IHeaderLayoutProps) {
 						id="search"
 						name="search"
 						type="search"
+						placeholder="Поиск.."
 						value={searchValue}
 						onChange={(e) => searchHandler(e.target.value)}
 					/>
