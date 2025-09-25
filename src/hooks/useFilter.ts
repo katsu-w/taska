@@ -2,23 +2,27 @@ import type { ITask } from '../types/types.ts';
 import { useState } from 'react';
 
 export const useFilter = (data: ITask[]) => {
-	const [selectValue, setSelectValue] = useState<'default' | 'alphabet'>('default');
+	const [selectValue, setSelectValue] = useState<string>('default');
 
-	const toFiltered = (value: 'default' | 'alphabet') => {
+	const toFiltered = (value: string): ITask[] => {
+		if (!data || data.length === 1) return data;
+
+		let result = data;
+
 		switch (value) {
 			case 'default':
-				return data.sort((a, b) => a.id - b.id);
-
+				result.sort((a, b) => a.id - b.id);
+				break;
 			case 'alphabet':
-				return data.sort((a, b) =>
-					a.title.toLowerCase().localeCompare(b.title.toLowerCase()),
-				);
+				result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+				break;
 		}
+		return result;
 	};
 
-	const filteredData = toFiltered(selectValue);
+	const filteredData: ITask[] = toFiltered(selectValue);
 
-	const changeSelectHandler = (value: 'default' | 'alphabet') => {
+	const changeSelectHandler = (value: string) => {
 		setSelectValue(value);
 	};
 
