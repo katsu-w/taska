@@ -1,4 +1,5 @@
 import './HeaderLayout.scss';
+import { Link } from 'react-router-dom';
 
 interface IHeaderLayoutProps {
 	searchValue: string;
@@ -13,9 +14,9 @@ export function HeaderLayout(props: IHeaderLayoutProps) {
 	return (
 		<header className="header">
 			<div className="header__inner container">
-				<a className="logo" href="/">
+				<Link className="logo" to="/">
 					Taska
-				</a>
+				</Link>
 				<nav className="controls header__controls">
 					<input
 						className="controls__search input"

@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home.tsx';
 import type { SetStateAction } from 'react';
 import type { ITask } from '../types/types.ts';
+import Task from '../pages/Task.tsx';
 
 interface IAppProps {
 	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
@@ -23,6 +24,7 @@ export const AppRouter = (props: IAppProps) => {
 					/>
 				}
 			/>
+			<Route path="/task/:id" element={<Task taskList={filteredData} />} />
 		</Routes>
 	);
 };
