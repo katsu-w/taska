@@ -33,7 +33,7 @@ export function Modal(props: IModalProps) {
 				onSubmit={(e) => submitHandler(e)}
 				onClick={(e) => e.stopPropagation()}
 			>
-				<h3 className="form__title">Add new Task</h3>
+				<h3 className="form__title">Новая задача</h3>
 				<input
 					className="form__input input"
 					id="addTask"
@@ -50,10 +50,10 @@ export function Modal(props: IModalProps) {
 						className="btn form__button"
 						onClick={() => openModal((state) => !state)}
 					>
-						Cancel
+						Отмена
 					</button>
 					<button disabled={isUploading} type="submit" className="btn form__button">
-						Add
+						Создать
 					</button>
 				</div>
 				{error ? <p className="error">{error}</p> : null}
