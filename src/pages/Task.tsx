@@ -1,5 +1,5 @@
 import type { ITask } from '../types/types.ts';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 interface ITaskProps {
 	taskList: ITask[];
@@ -10,6 +10,8 @@ const Task = (props: ITaskProps) => {
 	const { id } = useParams();
 
 	const currentTask = id ? taskList.find((task) => task.id === +id) : null;
+
+	if (!currentTask) return <Navigate to="/404" />;
 
 	return (
 		<div>

@@ -27,7 +27,7 @@ export const AppRouter = (props: IAppProps) => {
 			/>
 			<Route path="/task/:id" element={<Task taskList={filteredData} />} />
 			<Route path="/404" element={<PageNotFound />} />
-			<Route path="*" element={<Navigate replace to="/404" />} />
+			<Route path="*" element={<Navigate to="/404" />} />
 		</Routes>
 	);
 };
