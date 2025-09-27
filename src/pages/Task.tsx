@@ -1,22 +1,34 @@
 import type { ITask } from '../types/types.ts';
 import { Navigate, useParams } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 interface ITaskProps {
 	taskList: ITask[];
+	isLoading: boolean;
 }
 
 const Task = (props: ITaskProps) => {
-	const { taskList } = props;
+	const { taskList, isLoading } = props;
+
+	let currentTask: ITask | undefined = undefined;
 	const { id } = useParams();
 
-	const currentTask = id ? taskList.find((task) => task.id === +id) : null;
+	if (!isLoading && id) {
+		currentTask = taskList.find((task) => task.id === +id);
 
-	if (!currentTask) return <Navigate to="/404" />;
+		if (!currentTask) return <Navigate to="/404" />;
+	}
 
 	return (
-		<div>
-			{currentTask?.id}. {currentTask?.title}
-		</div>
+		<>
+			{isLoading ? (
+				<Loader />
+			) : (
+				<div>
+					{currentTask?.id}. {currentTask?.title}
+				</div>
+			)}
+		</>
 	);
 };
 

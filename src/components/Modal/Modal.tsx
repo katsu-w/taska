@@ -20,7 +20,7 @@ export function Modal(props: IModalProps) {
 
 		if (inputValue.length > 0) {
 			requestAddNewTask(inputValue);
-			openModal((state) => !state);
+			openModal(false);
 		}
 
 		setError('Введите текст');
@@ -48,7 +48,7 @@ export function Modal(props: IModalProps) {
 					<button
 						type="button"
 						className="btn form__button"
-						onClick={() => openModal((state) => !state)}
+						onClick={() => openModal(false)}
 					>
 						Отмена
 					</button>

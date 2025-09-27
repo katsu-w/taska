@@ -1,4 +1,5 @@
 import HeaderLayout from './HeaderLayout';
+import { useMatch } from 'react-router-dom';
 
 interface IHeaderProps {
 	searchValue: string;
@@ -10,8 +11,11 @@ interface IHeaderProps {
 export function Header(props: IHeaderProps) {
 	const { searchValue, searchHandler, selectValue, changeSelectHandler } = props;
 
+	const isOnMainPage: boolean = !!useMatch('/');
+
 	return (
 		<HeaderLayout
+			isOnMainPage={isOnMainPage}
 			searchValue={searchValue}
 			searchHandler={searchHandler}
 			selectValue={selectValue}

@@ -18,12 +18,14 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+}
 
-		@include mobile {
-			flex-direction: column;
-			column-gap: rem(15);
-			align-items: flex-start;
-		}
+.on-main {
+	@include mobile {
+		flex-direction: column;
+		column-gap: rem(15);
+		align-items: flex-start;
 	}
 }
 
@@ -48,5 +50,9 @@
 		&:focus {
 			border-radius: rem(12) rem(12) 0 0;
 		}
+	}
+	
+	&__go-back-btn {
+		padding: rem(8) rem(32);
 	}
 }
