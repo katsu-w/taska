@@ -21,7 +21,9 @@
 		box-shadow: var(--shadow);
 
 		@include mobile {
-			width: 90%;
+			width: 30%;
+			right: 50%;
+			translate: 50%;
 			aspect-ratio: 1 / 0.15;
 			border-radius: rem(15);
 		}
