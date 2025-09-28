@@ -1,14 +1,17 @@
 import type { ITask } from '../types/types.ts';
 import { Navigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
+import TaskDetails from '../components/TaskDetails';
+import type { SetStateAction } from 'react';
 
 interface ITaskProps {
 	taskList: ITask[];
 	isLoading: boolean;
+	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
 }
 
 const Task = (props: ITaskProps) => {
-	const { taskList, isLoading } = props;
+	const { taskList, isLoading, setTaskList } = props;
 
 	let currentTask: ITask | undefined = undefined;
 	const { id } = useParams();
@@ -24,9 +27,7 @@ const Task = (props: ITaskProps) => {
 			{isLoading ? (
 				<Loader />
 			) : (
-				<div>
-					{currentTask?.id}. {currentTask?.title}
-				</div>
+				<TaskDetails currentTask={currentTask} setTaskList={setTaskList} />
 			)}
 		</>
 	);

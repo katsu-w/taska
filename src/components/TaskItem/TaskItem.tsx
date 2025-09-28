@@ -3,6 +3,7 @@ import type { SetStateAction } from 'react';
 import type { ITask } from '../../types/types.ts';
 import { useRequestChangeCompletion, useRequestDeleteTask } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
+import DeleteTaskButton from '../UI/DeleteTaskButton';
 
 interface ITaskItemProps {
 	id: number;
@@ -32,16 +33,12 @@ export function TaskItem(props: ITaskItemProps) {
 				/>
 				<p className="task__title">{title}</p>
 			</div>
-			<button
-				onClick={(e) => {
-					e.stopPropagation();
-					requestDeleteTask(id);
-				}}
-				disabled={isDeleting}
-				className="task__remove-btn btn"
-			>
-				Удалить
-			</button>
+			<DeleteTaskButton
+				id={id}
+				requestDeleteTask={requestDeleteTask}
+				isDeleting={isDeleting}
+				className="remove-btn"
+			/>
 		</div>
 	);
 }
