@@ -6,6 +6,10 @@
 	flex-direction: column;
 	row-gap: rem(20);
 	
+	@include mobile {
+		padding-top: 0;
+	}
+	
 	&__delete-btn {
 		padding: rem(5) rem(15);
 	}

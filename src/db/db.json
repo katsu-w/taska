@@ -24,6 +24,11 @@
       "title": "Реализовать сортировку",
       "completed": true,
       "id": 5
+    },
+    {
+      "title": "{currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} ",
+      "completed": false,
+      "id": 6
     }
   ]
 }

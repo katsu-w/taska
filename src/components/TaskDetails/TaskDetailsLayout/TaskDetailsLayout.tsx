@@ -26,9 +26,8 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 				/>
 			</div>
 			<div className="task-details__info">
-				<span>
-					{currentTask.id}. {currentTask.title}
-				</span>
+				<h3 className="info__task-id">ID Задачи: {currentTask.id}</h3>
+				<p>{currentTask.title}</p>
 			</div>
 		</main>
 	);
