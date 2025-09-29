@@ -16,16 +16,20 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 	}
 
 	return (
-		<main className="task-details">
-			<span>
-				{currentTask.id}. {currentTask.title}
-			</span>
-			<DeleteTaskButton
-				id={currentTask?.id}
-				requestDeleteTask={requestDeleteTask}
-				isDeleting={isDeleting}
-				className="task-details__btn"
-			/>
+		<main className="task-details container">
+			<div className="task-details__controls">
+				<DeleteTaskButton
+					id={currentTask.id}
+					requestDeleteTask={requestDeleteTask}
+					isDeleting={isDeleting}
+					className="task-details__delete-btn"
+				/>
+			</div>
+			<div className="task-details__info">
+				<span>
+					{currentTask.id}. {currentTask.title}
+				</span>
+			</div>
 		</main>
 	);
 }

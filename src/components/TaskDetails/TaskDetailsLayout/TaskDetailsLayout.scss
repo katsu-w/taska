@@ -1,3 +1,20 @@
-.task-details {
+@use '/src/styles/helpers' as *;
 
+.task-details {
+	padding-top: rem(20);
+	display: flex;
+	flex-direction: column;
+	row-gap: rem(20);
+	
+	&__delete-btn {
+		padding: rem(5) rem(15);
+	}
+	
+	&__info {
+		background-color: var(--color-gray);
+		width: 100%;
+		border-radius: rem(20);
+		padding: rem(20);
+		overflow-wrap: break-word;
+	}
 }
