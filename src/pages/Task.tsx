@@ -1,13 +1,12 @@
-import type { ITask } from '../types/types.ts';
+import type { ITask, TSetTaskList } from '../types/types.ts';
 import { Navigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import TaskDetails from '../components/TaskDetails';
-import type { SetStateAction } from 'react';
 
 interface ITaskProps {
 	taskList: ITask[];
 	isLoading: boolean;
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
+	setTaskList: TSetTaskList;
 }
 
 const Task = (props: ITaskProps) => {

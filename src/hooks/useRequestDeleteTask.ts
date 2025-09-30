@@ -1,9 +1,7 @@
-import type { ITask } from '../types/types.ts';
-import { type SetStateAction, useState } from 'react';
+import type { TSetTaskList } from '../types/types.ts';
+import { useState } from 'react';
 
-export const useRequestDeleteTask = (
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>,
-) => {
+export const useRequestDeleteTask = (setTaskList: TSetTaskList) => {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	const requestDeleteTask = (id: number) => {

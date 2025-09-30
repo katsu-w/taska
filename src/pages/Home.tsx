@@ -1,10 +1,10 @@
-import { type SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import TaskList from '../components/TaskList';
 import Modal from '../components/Modal';
-import type { ITask } from '../types/types.ts';
+import type { ITask, TSetTaskList } from '../types/types.ts';
 
 interface IHomeProps {
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
+	setTaskList: TSetTaskList;
 	filteredData: ITask[];
 	isLoading: boolean;
 }

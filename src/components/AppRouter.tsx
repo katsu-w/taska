@@ -1,12 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home.tsx';
-import type { SetStateAction } from 'react';
-import type { ITask } from '../types/types.ts';
+import type { ITask, TSetTaskList } from '../types/types.ts';
 import Task from '../pages/Task.tsx';
 import PageNotFound from '../pages/PageNotFound.tsx';
 
 interface IAppProps {
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
+	setTaskList: TSetTaskList;
 	filteredData: ITask[];
 	isLoading: boolean;
 }

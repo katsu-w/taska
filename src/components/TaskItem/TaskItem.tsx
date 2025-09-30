@@ -1,6 +1,5 @@
 import './TaskItem.scss';
-import type { SetStateAction } from 'react';
-import type { ITask } from '../../types/types.ts';
+import type { TSetTaskList } from '../../types/types.ts';
 import { useRequestChangeCompletion, useRequestDeleteTask } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import DeleteTaskButton from '../UI/DeleteTaskButton';
@@ -10,7 +9,7 @@ interface ITaskItemProps {
 	id: number;
 	status: boolean;
 	title: string;
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
+	setTaskList: TSetTaskList;
 }
 
 export function TaskItem(props: ITaskItemProps) {

@@ -1,11 +1,11 @@
 import './Modal.scss';
 import { type FormEvent, type SetStateAction, useState } from 'react';
 import { useRequestAddNewTask } from '../../hooks/useRequestAddNewTask.ts';
-import type { ITask } from '../../types/types.ts';
+import type { TSetTaskList } from '../../types/types.ts';
 
 interface IModalProps {
 	openModal: React.Dispatch<SetStateAction<boolean>>;
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>;
+	setTaskList: TSetTaskList;
 }
 
 export function Modal(props: IModalProps) {

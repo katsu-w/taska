@@ -1,9 +1,7 @@
-import { type SetStateAction, useState } from 'react';
-import type { ITask } from '../types/types.ts';
+import { useState } from 'react';
+import type { ITask, TSetTaskList } from '../types/types.ts';
 
-export const useRequestAddNewTask = (
-	setTaskList: React.Dispatch<SetStateAction<ITask[]>>,
-) => {
+export const useRequestAddNewTask = (setTaskList: TSetTaskList) => {
 	const [isUploading, setIsUploading] = useState(false);
 
 	const requestAddNewTask = (text: string) => {

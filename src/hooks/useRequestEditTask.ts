@@ -1,17 +1,17 @@
 import type { TSetTaskList } from '../types/types.ts';
 import { useState } from 'react';
 
-export const useRequestChangeCompletion = (setTaskList: TSetTaskList) => {
-	const [isUpdating, setIsUpdating] = useState(false);
+export const useRequestEditTask = (setTaskList: TSetTaskList) => {
+	const [isEditing, setIsEditing] = useState(false);
 
-	const requestChangeCompletion = (id: number, prevStatus: boolean) => {
-		setIsUpdating(true);
+	const requestEditTask = (id: number, newTitle: string) => {
+		setIsEditing(true);
 
 		fetch(`http://localhost:3000/tasks/${id}`, {
 			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json;charset=utf-8' },
 			body: JSON.stringify({
-				completed: !prevStatus,
+				title: newTitle,
 			}),
 		})
 			.then((rawResponse) => rawResponse.json())
@@ -22,9 +22,9 @@ export const useRequestChangeCompletion = (setTaskList: TSetTaskList) => {
 			)
 			.catch((e) => console.log(e))
 			.finally(() => {
-				setIsUpdating(false);
+				setIsEditing(false);
 			});
 	};
 
-	return { requestChangeCompletion, isUpdating };
+	return { requestEditTask, isEditing };
 };

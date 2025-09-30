@@ -10,7 +10,12 @@
 		padding-top: 0;
 	}
 	
-	&__delete-btn {
+	&__controls {
+		display: flex;
+		column-gap: rem(20);
+	}
+	
+	&__delete-btn, &__edit-btn {
 		padding: rem(5) rem(15);
 	}
 	
@@ -20,5 +25,23 @@
 		border-radius: rem(20);
 		padding: rem(20);
 		overflow-wrap: break-word;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		row-gap: rem(20);
 	}
+	
+	&__textarea {
+		background-color: var(--color-gray);
+		color: var(--color-font);
+		padding: rem(10);
+		border: var(--border);
+		border-radius: rem(10);
+		width: 100%;
+		height: rem(200);
+	}
+}
+
+.info__task-id {
+	line-height: 1;
 }
