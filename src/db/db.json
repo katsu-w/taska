@@ -13,7 +13,7 @@
     {
       "id": 3,
       "title": "Наесться пиццей",
-      "completed": true
+      "completed": false
     },
     {
       "title": "Реализовать поиск",
@@ -26,8 +26,8 @@
       "id": 5
     },
     {
-      "title": "{currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} {currentTask.id} ",
-      "completed": false,
+      "title": "Добавить маршрутизацию и редактирование текста задачи",
+      "completed": true,
       "id": 6
     }
   ]
