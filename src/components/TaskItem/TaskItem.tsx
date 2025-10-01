@@ -1,22 +1,21 @@
 import './TaskItem.scss';
-import type { TSetTaskList } from '../../types/types.ts';
-import { useRequestChangeCompletion, useRequestDeleteTask } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import DeleteTaskButton from '../UI/DeleteTaskButton';
 import StatusCheckbox from '../UI/StatusCheckbox';
+import { useTasks } from '../../hooks/useTasks.ts';
 
 interface ITaskItemProps {
 	id: number;
 	status: boolean;
 	title: string;
-	setTaskList: TSetTaskList;
 }
 
 export function TaskItem(props: ITaskItemProps) {
-	const { id, status, title, setTaskList } = props;
+	const { id, status, title } = props;
 
-	const { requestChangeCompletion, isUpdating } = useRequestChangeCompletion(setTaskList);
-	const { requestDeleteTask, isDeleting } = useRequestDeleteTask(setTaskList);
+	const { changeTaskCompletion } = useTasks();
+	const { deleteTask } = useTasks();
+
 	const navigate = useNavigate();
 	return (
 		<div className="task" onClick={() => navigate(`/task/${id}`)}>
@@ -24,15 +23,15 @@ export function TaskItem(props: ITaskItemProps) {
 				<StatusCheckbox
 					id={id}
 					status={status}
-					requestChangeCompletion={requestChangeCompletion}
-					isUpdating={isUpdating}
+					requestChangeCompletion={changeTaskCompletion.requestChangeCompletion}
+					isUpdating={changeTaskCompletion.isUpdating}
 				/>
 				<p className="task__title">{title}</p>
 			</div>
 			<DeleteTaskButton
 				id={id}
-				requestDeleteTask={requestDeleteTask}
-				isDeleting={isDeleting}
+				requestDeleteTask={deleteTask.requestDeleteTask}
+				isDeleting={deleteTask.isDeleting}
 				className="remove-btn"
 			/>
 		</div>
