@@ -13,7 +13,7 @@
     {
       "id": 3,
       "title": "Наесться пиццей",
-      "completed": false
+      "completed": true
     },
     {
       "title": "Реализовать поиск",

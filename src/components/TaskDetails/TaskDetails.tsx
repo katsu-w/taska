@@ -1,21 +1,23 @@
 import TaskDetailsLayout from './TaskDetailsLayout';
-import type { ITask, TSetTaskList } from '../../types/types.ts';
+import type { ITask } from '../../types/types.ts';
 import { useRequestChangeCompletion, useRequestDeleteTask } from '../../hooks';
 import Loader from '../Loader';
 import { useRequestEditTask } from '../../hooks/useRequestEditTask.ts';
-import { useState } from 'react';
+import { use, useState } from 'react';
+import { TaskListContext } from '../../taskListContext.ts';
 
 interface ITaskDetailsProps {
 	currentTask: ITask | undefined;
-	setTaskList: TSetTaskList;
 }
 
 export function TaskDetails(props: ITaskDetailsProps) {
-	const { currentTask, setTaskList } = props;
+	const { currentTask } = props;
 
 	if (!currentTask) {
 		return <Loader />;
 	}
+
+	const { setTaskList } = use(TaskListContext);
 
 	const { requestDeleteTask, isDeleting } = useRequestDeleteTask(setTaskList);
 	const { requestChangeCompletion, isUpdating } = useRequestChangeCompletion(setTaskList);

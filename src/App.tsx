@@ -4,6 +4,7 @@ import { useRequestGetTaskList } from './hooks';
 import { useSearch } from './hooks/useSearch.ts';
 import { useFilter } from './hooks/useFilter.ts';
 import { AppRouter } from './components/AppRouter.tsx';
+import { TaskListContext } from './taskListContext.ts';
 
 export function App() {
 	const { taskList, isLoading, setTaskList } = useRequestGetTaskList();
@@ -11,18 +12,14 @@ export function App() {
 	const { selectValue, changeSelectHandler, filteredData } = useFilter(searchedData);
 
 	return (
-		<>
+		<TaskListContext value={{ filteredData, setTaskList }}>
 			<Header
 				searchValue={searchValue}
 				searchHandler={searchHandler}
 				selectValue={selectValue}
 				changeSelectHandler={changeSelectHandler}
 			/>
-			<AppRouter
-				isLoading={isLoading}
-				setTaskList={setTaskList}
-				filteredData={filteredData}
-			/>
-		</>
+			<AppRouter isLoading={isLoading} />
+		</TaskListContext>
 	);
 }

@@ -1,35 +1,28 @@
-import type { ITask, TSetTaskList } from '../types/types.ts';
+import type { ITask } from '../types/types.ts';
 import { Navigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import TaskDetails from '../components/TaskDetails';
+import { use } from 'react';
+import { TaskListContext } from '../taskListContext.ts';
 
 interface ITaskProps {
-	taskList: ITask[];
 	isLoading: boolean;
-	setTaskList: TSetTaskList;
 }
 
 const Task = (props: ITaskProps) => {
-	const { taskList, isLoading, setTaskList } = props;
+	const { isLoading } = props;
+	const { filteredData } = use(TaskListContext);
 
 	let currentTask: ITask | undefined = undefined;
 	const { id } = useParams();
 
 	if (!isLoading && id) {
-		currentTask = taskList.find((task) => task.id === +id);
+		currentTask = filteredData.find((task) => task.id === +id);
 
 		if (!currentTask) return <Navigate to="/404" />;
 	}
 
-	return (
-		<>
-			{isLoading ? (
-				<Loader />
-			) : (
-				<TaskDetails currentTask={currentTask} setTaskList={setTaskList} />
-			)}
-		</>
-	);
+	return <>{isLoading ? <Loader /> : <TaskDetails currentTask={currentTask} />}</>;
 };
 
 export default Task;
