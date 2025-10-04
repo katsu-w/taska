@@ -14,11 +14,6 @@
       "completed": false
     },
     {
-      "id": 3,
-      "title": "Наесться пиццей",
-      "completed": true
-    },
-    {
       "title": "Реализовать поиск",
       "completed": true,
       "id": 4
