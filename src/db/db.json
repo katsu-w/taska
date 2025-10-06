@@ -3,15 +3,12 @@
     {
       "id": 1,
       "title": "Перенести TODO на JSON-Server",
-      "completed": true,
-      "payload": {
-        "completed": true
-      }
+      "completed": true
     },
     {
       "id": 2,
       "title": "Досмотреть сказку о сахарном яблоке",
-      "completed": false
+      "completed": true
     },
     {
       "title": "Реализовать поиск",
@@ -29,9 +26,19 @@
       "id": 6
     },
     {
-      "title": "Объединить хуки в один файл",
-      "completed": false,
+      "title": "Объединить хуки в один файл.",
+      "completed": true,
       "id": 7
+    },
+    {
+      "title": "переписать useTasks на единый вызов в App и доступ к изменениям задач через контекст",
+      "completed": false,
+      "id": 8
+    },
+    {
+      "title": "разобраться с fetchServer",
+      "completed": false,
+      "id": 9
     }
   ]
 }

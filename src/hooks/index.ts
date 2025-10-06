@@ -1,3 +1,3 @@
-export { useRequestGetTaskList } from './useRequestGetTaskList.ts';
-export { useRequestChangeCompletion } from './useRequestChangeCompletion.ts';
-export { useRequestDeleteTask } from './useRequestDeleteTask.ts';
+export { useFilter } from './useFilter.ts';
+export { useSearch } from './useSearch.ts';
+export { useTasks } from './useTasks.ts';

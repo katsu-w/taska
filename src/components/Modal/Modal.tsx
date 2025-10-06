@@ -1,6 +1,6 @@
 import './Modal.scss';
 import { type FormEvent, type SetStateAction, use, useState } from 'react';
-import { useRequestAddNewTask } from '../../hooks/useRequestAddNewTask.ts';
+import { useTasks } from '../../hooks';
 import { TaskListContext } from '../../taskListContext.ts';
 
 interface IModalProps {
@@ -12,14 +12,14 @@ export function Modal(props: IModalProps) {
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 
+	const { addTask } = useTasks();
 	const { setTaskList } = use(TaskListContext);
-	const { requestAddNewTask, isUploading } = useRequestAddNewTask(setTaskList);
 
 	const submitHandler = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (inputValue.length > 0) {
-			requestAddNewTask(inputValue);
+			addTask.requestAddNewTask(inputValue, setTaskList);
 			openModal(false);
 		}
 
@@ -52,7 +52,11 @@ export function Modal(props: IModalProps) {
 					>
 						Отмена
 					</button>
-					<button disabled={isUploading} type="submit" className="btn form__button">
+					<button
+						disabled={addTask.isUploading}
+						type="submit"
+						className="btn form__button"
+					>
 						Создать
 					</button>
 				</div>
