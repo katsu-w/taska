@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { ITask, TSetTaskList } from '../types/types.ts';
+import type { ITask } from '../types/types.ts';
 import { fetchServer } from '../utils/utils.ts';
 
 export const useTasks = () => {
@@ -17,19 +17,12 @@ export const useTasks = () => {
 			.finally(() => setIsLoading(false));
 	}, []);
 
-	const requestEditTask = (id: number, newTitle: string, sl: TSetTaskList) => {
+	const requestEditTask = (id: number, newTitle: string) => {
 		setIsEditing(true);
 
-		fetch(`http://localhost:3000/tasks/${id}`, {
-			method: 'PATCH',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			body: JSON.stringify({
-				title: newTitle,
-			}),
-		})
-			.then((rawResponse) => rawResponse.json())
+		fetchServer('PATCH', { id, title: newTitle })
 			.then((updatedTask) =>
-				sl((prevTaskList) =>
+				setTaskList((prevTaskList) =>
 					prevTaskList.map((task) => (task.id === updatedTask.id ? updatedTask : task)),
 				),
 			)
@@ -39,11 +32,12 @@ export const useTasks = () => {
 			});
 	};
 
-	const requestDeleteTask = (id: number, sl: TSetTaskList) => {
+	const requestDeleteTask = (id: number) => {
 		setIsDeleting(true);
+
 		fetchServer('DELETE', { id })
 			.then(() => {
-				sl((prevTaskList) => {
+				setTaskList((prevTaskList) => {
 					return prevTaskList.filter((task) => task.id !== id);
 				});
 			})
@@ -51,39 +45,23 @@ export const useTasks = () => {
 			.finally(() => setIsDeleting(false));
 	};
 
-	const requestAddNewTask = (text: string, sl: TSetTaskList) => {
+	const requestAddNewTask = (text: string) => {
 		setIsUploading(true);
 
-		fetch('http://localhost:3000/tasks/', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			body: JSON.stringify({
-				title: text,
-				completed: false,
-			}),
-		})
-			.then((rawResponse) => rawResponse.json())
-			.then((newTask: ITask) => sl((prevTaskList) => [...prevTaskList, newTask]))
+		fetchServer('POST', { title: text })
+			.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
 			.catch((e) => console.log(e))
 			.finally(() => {
 				setIsUploading(false);
 			});
 	};
 
-	const requestChangeCompletion = (id: number, prevStatus: boolean, sl: TSetTaskList) => {
+	const requestChangeCompletion = (id: number, prevStatus: boolean) => {
 		setIsUpdating(true);
 
-		fetch(`http://localhost:3000/tasks/${id}`, {
-			method: 'PATCH',
-			headers: { 'Content-Type': 'application/json;charset=utf-8' },
-			body: JSON.stringify({
-				completed: !prevStatus,
-			}),
-		})
-			.then((rawResponse) => rawResponse.json())
+		fetchServer('PATCH', { id, completed: !prevStatus })
 			.then((updatedTask) =>
-				sl((prevTaskList) => {
-					console.log(updatedTask);
+				setTaskList((prevTaskList) => {
 					return prevTaskList.map((task) =>
 						task.id === updatedTask.id ? updatedTask : task,
 					);

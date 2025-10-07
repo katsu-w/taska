@@ -2,7 +2,8 @@ import './TaskItem.scss';
 import { useNavigate } from 'react-router-dom';
 import DeleteTaskButton from '../UI/DeleteTaskButton';
 import StatusCheckbox from '../UI/StatusCheckbox';
-import { useTasks } from '../../hooks';
+import { use } from 'react';
+import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface ITaskItemProps {
 	id: number;
@@ -13,7 +14,7 @@ interface ITaskItemProps {
 export function TaskItem(props: ITaskItemProps) {
 	const { id, status, title } = props;
 
-	const { changeTaskCompletion, deleteTask } = useTasks();
+	const { changeTaskCompletion, deleteTask } = use(TaskListContext);
 
 	const navigate = useNavigate();
 	return (

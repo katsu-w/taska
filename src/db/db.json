@@ -8,37 +8,37 @@
     {
       "id": 2,
       "title": "Досмотреть сказку о сахарном яблоке",
-      "completed": true
+      "completed": false
     },
     {
       "title": "Реализовать поиск",
       "completed": true,
-      "id": 4
+      "id": 3
     },
     {
       "title": "Реализовать сортировку",
       "completed": true,
-      "id": 5
+      "id": 4
     },
     {
       "title": "Добавить маршрутизацию и редактирование текста задачи",
       "completed": true,
-      "id": 6
+      "id": 5
     },
     {
       "title": "Объединить хуки в один файл.",
       "completed": true,
-      "id": 7
+      "id": 6
     },
     {
       "title": "переписать useTasks на единый вызов в App и доступ к изменениям задач через контекст",
-      "completed": false,
-      "id": 8
+      "completed": true,
+      "id": 7
     },
     {
       "title": "разобраться с fetchServer",
-      "completed": false,
-      "id": 9
+      "completed": true,
+      "id": 8
     }
   ]
 }

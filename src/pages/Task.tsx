@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import TaskDetails from '../components/TaskDetails';
 import { use } from 'react';
-import { TaskListContext } from '../taskListContext.ts';
+import { TaskListContext } from '../context/taskListContext.ts';
 
 interface ITaskProps {
 	isLoading: boolean;

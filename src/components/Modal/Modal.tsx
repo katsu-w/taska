@@ -1,7 +1,6 @@
 import './Modal.scss';
 import { type FormEvent, type SetStateAction, use, useState } from 'react';
-import { useTasks } from '../../hooks';
-import { TaskListContext } from '../../taskListContext.ts';
+import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface IModalProps {
 	openModal: React.Dispatch<SetStateAction<boolean>>;
@@ -12,14 +11,13 @@ export function Modal(props: IModalProps) {
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 
-	const { addTask } = useTasks();
-	const { setTaskList } = use(TaskListContext);
+	const { addTask } = use(TaskListContext);
 
 	const submitHandler = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (inputValue.length > 0) {
-			addTask.requestAddNewTask(inputValue, setTaskList);
+			addTask.requestAddNewTask(inputValue);
 			openModal(false);
 		}
 

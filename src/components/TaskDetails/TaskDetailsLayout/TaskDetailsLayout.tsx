@@ -1,21 +1,16 @@
 import './TaskDetailsLayout.scss';
-import type { ITask, TSetTaskList } from '../../../types/types.ts';
+import type { ITask } from '../../../types/types.ts';
 import DeleteTaskButton from '../../UI/DeleteTaskButton';
 import StatusCheckbox from '../../UI/StatusCheckbox';
-import { type SetStateAction, use } from 'react';
-import { TaskListContext } from '../../../taskListContext.ts';
+import { type SetStateAction } from 'react';
 
 interface ITaskDetailsLayoutProps {
 	currentTask: ITask;
-	requestDeleteTask: (id: number, setTaskList: TSetTaskList) => void;
+	requestDeleteTask: (id: number) => void;
 	isDeleting: boolean;
-	requestChangeCompletion: (
-		id: number,
-		status: boolean,
-		setTaskList: TSetTaskList,
-	) => void;
+	requestChangeCompletion: (id: number, status: boolean) => void;
 	isUpdating: boolean;
-	requestEditTask: (id: number, newTitle: string, setTaskList: TSetTaskList) => void;
+	requestEditTask: (id: number, newTitle: string) => void;
 	isEditing: boolean;
 	newTitleTextValue: string;
 	setNewTitleTextValue: React.Dispatch<SetStateAction<string>>;
@@ -37,8 +32,6 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 		showTextarea,
 		setShowTextarea,
 	} = props;
-
-	const { setTaskList } = use(TaskListContext);
 
 	return (
 		<main className="task-details container">
@@ -75,7 +68,7 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 						/>
 						<button
 							onClick={() => {
-								requestEditTask(currentTask.id, newTitleTextValue, setTaskList);
+								requestEditTask(currentTask.id, newTitleTextValue);
 								setShowTextarea(false);
 							}}
 							disabled={isEditing}

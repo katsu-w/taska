@@ -1,8 +1,8 @@
 import TaskDetailsLayout from './TaskDetailsLayout';
 import type { ITask } from '../../types/types.ts';
 import Loader from '../Loader';
-import { useState } from 'react';
-import { useTasks } from '../../hooks';
+import { use, useState } from 'react';
+import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface ITaskDetailsProps {
 	currentTask: ITask | undefined;
@@ -15,7 +15,7 @@ export function TaskDetails(props: ITaskDetailsProps) {
 		return <Loader />;
 	}
 
-	const { deleteTask, changeTaskCompletion, editTask } = useTasks();
+	const { deleteTask, changeTaskCompletion, editTask } = use(TaskListContext);
 
 	const [newTitleTextValue, setNewTitleTextValue] = useState(currentTask.title);
 	const [showTextarea, setShowTextarea] = useState(false);

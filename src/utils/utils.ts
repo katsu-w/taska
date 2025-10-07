@@ -11,6 +11,13 @@ export const fetchServer = async (method: string, { id, ...payload } = {}) => {
 		options.body = JSON.stringify(payload);
 	}
 
+	if (method === 'POST') {
+		options.body = JSON.stringify({
+			...payload,
+			completed: false,
+		});
+	}
+
 	const loadedData = await fetch(url, options);
 	return await loadedData.json();
 };

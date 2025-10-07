@@ -1,6 +1,6 @@
 import TaskListLayout from './TaskListLayout';
 import { type SetStateAction, use } from 'react';
-import { TaskListContext } from '../../taskListContext.ts';
+import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface ITaskListProps {
 	isLoading: boolean;
