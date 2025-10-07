@@ -2,7 +2,7 @@ import './TaskDetailsLayout.scss';
 import type { ITask } from '../../../types/types.ts';
 import DeleteTaskButton from '../../UI/DeleteTaskButton';
 import StatusCheckbox from '../../UI/StatusCheckbox';
-import { type SetStateAction } from 'react';
+import { type SetStateAction, useLayoutEffect, useRef } from 'react';
 
 interface ITaskDetailsLayoutProps {
 	currentTask: ITask;
@@ -33,6 +33,16 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 		setShowTextarea,
 	} = props;
 
+	const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+	useLayoutEffect(() => {
+		const length = textareaRef.current?.value.length;
+
+		if (typeof textareaRef !== null && length !== undefined) {
+			textareaRef.current?.focus();
+			textareaRef.current?.setSelectionRange(length, length);
+		}
+	}, [showTextarea]);
 	return (
 		<main className="task-details container">
 			<div className="task-details__controls">
@@ -63,6 +73,7 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 						<textarea
 							className="task-details__textarea"
 							name="newTitleTextValue"
+							ref={textareaRef}
 							value={newTitleTextValue}
 							onChange={(e) => setNewTitleTextValue(e.target.value)}
 						/>

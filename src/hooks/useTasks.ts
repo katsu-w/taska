@@ -48,6 +48,8 @@ export const useTasks = () => {
 	const requestAddNewTask = (text: string) => {
 		setIsUploading(true);
 
+		if (!text.trim()) return setIsUploading(false);
+
 		fetchServer('POST', { title: text })
 			.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
 			.catch((e) => console.log(e))
