@@ -10,5 +10,5 @@ export type TSetTaskList = React.Dispatch<SetStateAction<ITask[]>>;
 
 export interface IAction {
 	type: string;
-	payload?: object;
+	payload?: { loadedTaskList?: ITask[]; newTask?: ITask };
 }

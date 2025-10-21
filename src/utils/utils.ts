@@ -1,6 +1,11 @@
+import type { ITask } from '../types/types.ts';
+
+export const taskListSelector = (state: { taskListState: ITask[] }) =>
+	state.taskListState;
+
 // @ts-ignore
 export const fetchServer = async (method: string, { id, ...payload } = {}) => {
-	let url: string = 'http://localhost:3000/tasks';
+	let url: string = 'http://localhost:3001/tasks';
 	let options: { method: string; headers: HeadersInit; body?: BodyInit } = {
 		method,
 		headers: { 'Content-Type': 'application/json;charset=utf-8' },

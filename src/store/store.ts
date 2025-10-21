@@ -1,4 +1,6 @@
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { taskListReducer } from '../reducers';
 
-export const store = createStore(taskListReducer);
+const reducer = combineReducers({ taskListState: taskListReducer });
+
+export const store = createStore(reducer);

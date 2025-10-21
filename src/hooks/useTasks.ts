@@ -1,18 +1,30 @@
 import { useEffect, useState } from 'react';
 import type { ITask } from '../types/types.ts';
-import { fetchServer } from '../utils/utils.ts';
+import { fetchServer, taskListSelector } from '../utils/utils.ts';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const useTasks = () => {
-	const [taskList, setTaskList] = useState<ITask[]>([]);
+	const taskListState = useSelector(taskListSelector);
+
+	const [taskList, setTaskList] = useState<ITask[]>(taskListState);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isEditing, setIsEditing] = useState<boolean>(false);
 	const [isDeleting, setIsDeleting] = useState<boolean>(false);
 	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
+	const dispatch = useDispatch();
+
 	useEffect(() => {
+		setIsLoading(true);
 		fetchServer('GET')
-			.then((loadedTaskList) => setTaskList(loadedTaskList))
+			.then((loadedTaskList: ITask[]) =>
+				dispatch({
+					type: 'taskList/LoadList',
+					payload: { loadedTaskList: loadedTaskList },
+				}),
+			)
+			.then(() => console.log(taskListState))
 			.catch((e) => console.log(e))
 			.finally(() => setIsLoading(false));
 	}, []);
