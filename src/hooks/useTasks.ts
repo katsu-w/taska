@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ITask } from '../types/types.ts';
 import { fetchServer, taskListSelector } from '../utils/utils.ts';
 import { useDispatch, useSelector } from 'react-redux';
+import { loadTaskList } from '../actions';
 
 export const useTasks = () => {
 	const taskListState = useSelector(taskListSelector);
@@ -17,17 +18,18 @@ export const useTasks = () => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		fetchServer('GET')
-			.then((loadedTaskList: ITask[]) =>
-				dispatch({
-					type: 'taskList/LoadList',
-					payload: { loadedTaskList: loadedTaskList },
-				}),
-			)
-			.then(() => console.log(taskListState))
-			.catch((e) => console.log(e))
-			.finally(() => setIsLoading(false));
+		try {
+			// @ts-ignore
+			dispatch(loadTaskList());
+		} catch (e) {
+			console.log(e);
+		}
 	}, []);
+
+	useEffect(() => {
+		setTaskList(taskListState);
+		setIsLoading(false);
+	}, [taskListState]);
 
 	const requestEditTask = (id: number, newTitle: string) => {
 		setIsEditing(true);

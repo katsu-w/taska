@@ -1,6 +1,8 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { taskListReducer } from '../reducers';
+import { thunk } from 'redux-thunk';
 
 const reducer = combineReducers({ taskListState: taskListReducer });
 
-export const store = createStore(reducer);
+// @ts-ignore
+export const store = createStore(reducer, applyMiddleware(thunk));

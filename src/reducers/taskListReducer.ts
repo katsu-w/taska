@@ -8,8 +8,8 @@ export const taskListReducer = (
 ) => {
 	switch (action.type) {
 		case 'taskList/LoadList':
-			if (action.payload?.loadedTaskList) {
-				return [...action.payload.loadedTaskList];
+			if (action.payload) {
+				return [...action.payload];
 			}
 			return state;
 		case 'taskList/AddNew':
