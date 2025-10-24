@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ITask } from '../types/types.ts';
 import { fetchServer, taskListSelector } from '../utils/utils.ts';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadTaskList } from '../actions';
+import { createLoadTaskListAction } from '../actions';
 
 export const useTasks = () => {
 	const taskListState = useSelector(taskListSelector);
@@ -20,7 +20,7 @@ export const useTasks = () => {
 		setIsLoading(true);
 		try {
 			// @ts-ignore
-			dispatch(loadTaskList());
+			dispatch(createLoadTaskListAction());
 		} catch (e) {
 			console.log(e);
 		}

@@ -1,17 +1,14 @@
-import type { IAction, ITask } from '../types/types.ts';
+import type { TAction, ITask } from '../types/types.ts';
 
 const initialTaskListState: ITask[] | [] = [];
 
 export const taskListReducer = (
 	state: ITask[] | [] = initialTaskListState,
-	action: IAction,
+	action: TAction,
 ) => {
 	switch (action.type) {
 		case 'taskList/LoadList':
-			if (action.payload) {
-				return [...action.payload];
-			}
-			return state;
+			return [...action.payload.loadedTaskList];
 		case 'taskList/AddNew':
 			return [...state, { completed: false, ...action.payload }];
 		default:
