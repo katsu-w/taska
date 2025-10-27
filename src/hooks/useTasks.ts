@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { ITask } from '../types/types.ts';
-import { fetchServer, taskListSelector } from '../utils/utils.ts';
+import { fetchServer } from '../utils/utils.ts';
 import { useDispatch, useSelector } from 'react-redux';
-import { createLoadTaskListAction } from '../actions';
+import { createAddNewTaskAction, createLoadTaskListAction } from '../actions';
+import { taskListSelector } from '../selectors/taskListSelector.ts';
 
 export const useTasks = () => {
 	const taskListState = useSelector(taskListSelector);
@@ -64,12 +65,15 @@ export const useTasks = () => {
 
 		if (!text.trim()) return setIsUploading(false);
 
-		fetchServer('POST', { title: text })
-			.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
-			.catch((e) => console.log(e))
-			.finally(() => {
-				setIsUploading(false);
-			});
+		// @ts-ignore
+		dispatch(createAddNewTaskAction(text, taskListState.length))
+		
+		// fetchServer('POST', { title: text })
+		// 	.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
+		// 	.catch((e) => console.log(e))
+		// 	.finally(() => {
+		// 		setIsUploading(false);
+		// 	});
 	};
 
 	const requestChangeCompletion = (id: number, prevStatus: boolean) => {

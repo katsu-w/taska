@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { ITask, TSetTaskList } from '../types/types.ts';
+import type { TSetTaskList } from '../types/types.ts';
 
 type TAddTask = { requestAddNewTask: (text: string) => void; isUploading: boolean };
 type TEditTask = {
@@ -13,7 +13,6 @@ type TChangeCompletion = {
 };
 
 interface ITaskListContext {
-	filteredData: ITask[];
 	setTaskList: TSetTaskList;
 	addTask: TAddTask;
 	editTask: TEditTask;
@@ -22,7 +21,6 @@ interface ITaskListContext {
 }
 
 export const TaskListContext = createContext<ITaskListContext>({
-	filteredData: [],
 	setTaskList: () => {},
 	addTask: { requestAddNewTask: () => {}, isUploading: false },
 	editTask: { requestEditTask: () => {}, isEditing: false },

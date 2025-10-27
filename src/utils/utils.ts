@@ -1,7 +1,3 @@
-import type { ITask } from '../types/types.ts';
-
-export const taskListSelector = (state: { taskListState: ITask[] }) =>
-	state.taskListState;
 
 // @ts-ignore
 export const fetchServer = async (method: string, { id, ...payload } = {}) => {
@@ -11,14 +7,16 @@ export const fetchServer = async (method: string, { id, ...payload } = {}) => {
 		headers: { 'Content-Type': 'application/json;charset=utf-8' },
 	};
 
-	if (id !== undefined) {
+	if (id !== undefined && method !== 'POST') {
 		url += `/${id}`;
+		console.log(url);
 		options.body = JSON.stringify(payload);
 	}
 
 	if (method === 'POST') {
 		options.body = JSON.stringify({
 			...payload,
+			id: id,
 			completed: false,
 		});
 	}

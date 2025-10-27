@@ -2,8 +2,8 @@ import type { ITask } from '../types/types.ts';
 import { Navigate, useParams } from 'react-router-dom';
 import Loader from '../components/Loader';
 import TaskDetails from '../components/TaskDetails';
-import { use } from 'react';
-import { TaskListContext } from '../context/taskListContext.ts';
+import { useSelector } from 'react-redux';
+import { taskListSelector } from '../selectors/taskListSelector.ts';
 
 interface ITaskProps {
 	isLoading: boolean;
@@ -11,13 +11,13 @@ interface ITaskProps {
 
 const Task = (props: ITaskProps) => {
 	const { isLoading } = props;
-	const { filteredData } = use(TaskListContext);
+	const taskList = useSelector(taskListSelector);
 
 	let currentTask: ITask | undefined = undefined;
 	const { id } = useParams();
 
 	if (!isLoading && id) {
-		currentTask = filteredData.find((task) => task.id === +id);
+		currentTask = taskList.find((task) => task.id === +id);
 
 		if (!currentTask) return <Navigate to="/404" />;
 	}

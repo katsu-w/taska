@@ -11,34 +11,24 @@
       "completed": false
     },
     {
-      "title": "Реализовать поиск",
-      "completed": true,
+      "title": "asdasd",
+      "completed": false,
       "id": 3
     },
     {
-      "title": "Реализовать сортировку",
-      "completed": true,
+      "title": "asd",
+      "completed": false,
       "id": 4
     },
     {
-      "title": "Добавить маршрутизацию и редактирование текста задачи",
-      "completed": true,
+      "title": "asd",
+      "completed": false,
       "id": 5
     },
     {
-      "title": "Объединить хуки в один файл.",
-      "completed": true,
-      "id": 6
-    },
-    {
-      "title": "переписать useTasks на единый вызов в App и доступ к изменениям задач через контекст",
-      "completed": true,
-      "id": 7
-    },
-    {
-      "title": "разобраться с fetchServer",
-      "completed": true,
-      "id": 8
+      "title": "asd",
+      "id": 6,
+      "completed": false
     }
   ]
 }

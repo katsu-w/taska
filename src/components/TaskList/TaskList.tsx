@@ -1,6 +1,8 @@
 import TaskListLayout from './TaskListLayout';
 import { type SetStateAction, use } from 'react';
 import { TaskListContext } from '../../context/taskListContext.ts';
+import { useSelector } from 'react-redux';
+import { taskListSelector } from '../../selectors/taskListSelector.ts';
 
 interface ITaskListProps {
 	isLoading: boolean;
@@ -10,13 +12,14 @@ interface ITaskListProps {
 export function TaskList(props: ITaskListProps) {
 	const { openModal, isLoading } = props;
 
-	const { filteredData, setTaskList } = use(TaskListContext);
+	const { setTaskList } = use(TaskListContext);
+	const taskList = useSelector(taskListSelector);
 
 	return (
 		<TaskListLayout
 			openModal={openModal}
 			setTaskList={setTaskList}
-			filteredData={filteredData}
+			filteredData={taskList}
 			isLoading={isLoading}
 		/>
 	);
