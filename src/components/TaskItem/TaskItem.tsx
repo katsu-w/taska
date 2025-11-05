@@ -6,7 +6,7 @@ import { use } from 'react';
 import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface ITaskItemProps {
-	id: number;
+	id: string;
 	status: boolean;
 	title: string;
 }
@@ -14,26 +14,25 @@ interface ITaskItemProps {
 export function TaskItem(props: ITaskItemProps) {
 	const { id, status, title } = props;
 
-	const { changeTaskCompletion, deleteTask } = use(TaskListContext);
-
 	const navigate = useNavigate();
+
 	return (
 		<div className="task" onClick={() => navigate(`/task/${id}`)}>
 			<div className="task__details">
-				<StatusCheckbox
-					id={id}
-					status={status}
-					requestChangeCompletion={changeTaskCompletion.requestChangeCompletion}
-					isUpdating={changeTaskCompletion.isUpdating}
-				/>
+				{/*<StatusCheckbox*/}
+				{/*	id={id}*/}
+				{/*	status={status}*/}
+				{/*	requestChangeCompletion={changeTaskCompletion.requestChangeCompletion}*/}
+				{/*	isUpdating={changeTaskCompletion.isUpdating}*/}
+				{/*/>*/}
 				<p className="task__title">{title}</p>
 			</div>
-			<DeleteTaskButton
-				id={id}
-				requestDeleteTask={deleteTask.requestDeleteTask}
-				isDeleting={deleteTask.isDeleting}
-				className="remove-btn"
-			/>
+			{/*<DeleteTaskButton*/}
+			{/*	id={id}*/}
+			{/*	requestDeleteTask={deleteTask.requestDeleteTask}*/}
+			{/*	isDeleting={deleteTask.isDeleting}*/}
+			{/*	className="remove-btn"*/}
+			{/*/>*/}
 		</div>
 	);
 }

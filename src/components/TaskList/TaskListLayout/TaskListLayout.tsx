@@ -1,13 +1,12 @@
 import './TaskListLayout.scss';
 import Loader from '../../Loader';
-import type { ITask, TSetTaskList } from '../../../types/types.ts';
+import type { ITask } from '../../../types/types.ts';
 import TaskItem from '../../TaskItem';
 import type { SetStateAction } from 'react';
 
 interface ITaskListLayoutProps {
 	filteredData: ITask[];
 	isLoading: boolean;
-	setTaskList: TSetTaskList;
 	openModal: React.Dispatch<SetStateAction<boolean>>;
 }
 

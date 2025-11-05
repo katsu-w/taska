@@ -2,7 +2,7 @@ import './DeleteTaskButton.scss';
 import { useMatch, useNavigate } from 'react-router-dom';
 
 interface IDeleteTaskButtonProps {
-	id: number;
+	id: string;
 	requestDeleteTask: (id: number) => void;
 	isDeleting: boolean;
 	className: string;

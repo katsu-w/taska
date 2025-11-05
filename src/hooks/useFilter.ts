@@ -11,7 +11,7 @@ export const useFilter = (data: ITask[]) => {
 
 		switch (value) {
 			case 'default':
-				result.sort((a, b) => a.id - b.id);
+				result.sort((a, b) => +a.id - +b.id);
 				break;
 			case 'alphabet':
 				result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));

@@ -1,6 +1,7 @@
 import './Modal.scss';
-import { type FormEvent, type SetStateAction, use, useState } from 'react';
-import { TaskListContext } from '../../context/taskListContext.ts';
+import { type FormEvent, type SetStateAction, useState } from 'react';
+import { createAddNewTaskAction } from '../../actions';
+import { useDispatch } from 'react-redux';
 
 interface IModalProps {
 	openModal: React.Dispatch<SetStateAction<boolean>>;
@@ -11,13 +12,14 @@ export function Modal(props: IModalProps) {
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 
-	const { addTask } = use(TaskListContext);
+	const dispatch = useDispatch();
 
 	const submitHandler = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (inputValue.length > 0) {
-			addTask.requestAddNewTask(inputValue);
+		if (inputValue.length > 0 && inputValue.trim()) {
+			// @ts-ignore
+			dispatch(createAddNewTaskAction(inputValue))
 			openModal(false);
 		}
 
@@ -51,7 +53,6 @@ export function Modal(props: IModalProps) {
 						Отмена
 					</button>
 					<button
-						disabled={addTask.isUploading}
 						type="submit"
 						className="btn form__button"
 					>

@@ -47,7 +47,7 @@ export const useTasks = () => {
 			});
 	};
 
-	const requestDeleteTask = (id: number) => {
+	const requestDeleteTask = (id: string) => {
 		setIsDeleting(true);
 
 		fetchServer('DELETE', { id })
@@ -63,10 +63,7 @@ export const useTasks = () => {
 	const requestAddNewTask = (text: string) => {
 		setIsUploading(true);
 
-		if (!text.trim()) return setIsUploading(false);
 
-		// @ts-ignore
-		dispatch(createAddNewTaskAction(text, taskListState.length))
 		
 		// fetchServer('POST', { title: text })
 		// 	.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))

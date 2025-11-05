@@ -7,7 +7,7 @@ export const fetchServer = async (method: string, { id, ...payload } = {}) => {
 		headers: { 'Content-Type': 'application/json;charset=utf-8' },
 	};
 
-	if (id !== undefined && method !== 'POST') {
+	if (id !== undefined) {
 		url += `/${id}`;
 		console.log(url);
 		options.body = JSON.stringify(payload);
@@ -16,7 +16,6 @@ export const fetchServer = async (method: string, { id, ...payload } = {}) => {
 	if (method === 'POST') {
 		options.body = JSON.stringify({
 			...payload,
-			id: id,
 			completed: false,
 		});
 	}

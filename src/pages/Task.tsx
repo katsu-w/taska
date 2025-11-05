@@ -17,7 +17,7 @@ const Task = (props: ITaskProps) => {
 	const { id } = useParams();
 
 	if (!isLoading && id) {
-		currentTask = taskList.find((task) => task.id === +id);
+		currentTask = taskList.find((task) => task.id === id);
 
 		if (!currentTask) return <Navigate to="/404" />;
 	}
