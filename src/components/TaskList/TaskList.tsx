@@ -13,8 +13,6 @@ export function TaskList(props: ITaskListProps) {
 
 	const taskList = useSelector(taskListSelector);
 
-	console.log(taskList);
-
 	return (
 		<TaskListLayout
 			openModal={openModal}

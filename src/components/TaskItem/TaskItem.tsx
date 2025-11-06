@@ -27,12 +27,10 @@ export function TaskItem(props: ITaskItemProps) {
 				{/*/>*/}
 				<p className="task__title">{title}</p>
 			</div>
-			{/*<DeleteTaskButton*/}
-			{/*	id={id}*/}
-			{/*	requestDeleteTask={deleteTask.requestDeleteTask}*/}
-			{/*	isDeleting={deleteTask.isDeleting}*/}
-			{/*	className="remove-btn"*/}
-			{/*/>*/}
+			<DeleteTaskButton
+				id={id}
+				className="remove-btn"
+			/>
 		</div>
 	);
 }
