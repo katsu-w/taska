@@ -1,4 +1,5 @@
 import type { SetStateAction } from 'react';
+import type { store } from '../store/store.ts';
 
 export interface ITask {
 	id: string;
@@ -11,6 +12,8 @@ export type TSetTaskList = React.Dispatch<SetStateAction<ITask[]>>;
 export type TStore = {
 	taskListState: ITask[];
 };
+export type TRootState = ReturnType<typeof store.getState>;
+export type TAppDispatch = typeof store.dispatch;
 
 export type TLoadTaskListAction = {
 	type: 'taskList/LoadList';

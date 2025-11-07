@@ -1,10 +1,10 @@
 import './DeleteTaskButton.scss';
 import { useMatch, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createDeleteTaskAction } from '../../../actions/createDeleteTaskAction.ts';
 import { useState } from 'react';
 import { fetchServer } from '../../../utils/utils.ts';
 import { createLoadTaskListAction } from '../../../actions';
+import type { TAppDispatch } from '../../../types/types.ts';
 
 interface IDeleteTaskButtonProps {
 	id: string;
@@ -15,7 +15,7 @@ export function DeleteTaskButton(props: IDeleteTaskButtonProps) {
 	const { id, className } = props;
 	const [isDeleting, setIsDeleting] = useState<boolean>(false);
 
-	const dispatch = useDispatch();
+	const dispatch: TAppDispatch = useDispatch();
 
 	const homeMatch = useMatch('/');
 	const navigate = useNavigate();
@@ -25,8 +25,10 @@ export function DeleteTaskButton(props: IDeleteTaskButtonProps) {
 			onClick={(e) => {
 				e.stopPropagation();
 				setIsDeleting(true);
-				fetchServer('DELETE', { id });
-				dispatch(createLoadTaskListAction());
+				fetchServer('DELETE', { id }).then(() =>
+					dispatch(createLoadTaskListAction()).then(() => setIsDeleting(false)),
+				);
+
 				!homeMatch ? navigate('/') : null;
 			}}
 			disabled={isDeleting}

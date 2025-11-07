@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import type { ITask } from '../types/types.ts';
+import type { ITask, TAppDispatch } from '../types/types.ts';
 import { fetchServer } from '../utils/utils.ts';
 import { useDispatch, useSelector } from 'react-redux';
-import { createAddNewTaskAction, createLoadTaskListAction } from '../actions';
+import { createLoadTaskListAction } from '../actions';
 import { taskListSelector } from '../selectors/taskListSelector.ts';
 
 export const useTasks = () => {
@@ -12,25 +12,21 @@ export const useTasks = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [isEditing, setIsEditing] = useState<boolean>(false);
 	const [isDeleting, setIsDeleting] = useState<boolean>(false);
-	const [isUploading, setIsUploading] = useState<boolean>(false);
 	const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
-	const dispatch = useDispatch();
+	const dispatch: TAppDispatch = useDispatch();
 
 	useEffect(() => {
 		setIsLoading(true);
 		try {
-			// @ts-ignore
-			dispatch(createLoadTaskListAction());
+			dispatch(createLoadTaskListAction()).then(() => {
+				setIsLoading(false);
+				setTaskList(taskListState);
+			});
 		} catch (e) {
 			console.log(e);
 		}
 	}, []);
-
-	useEffect(() => {
-		setTaskList(taskListState);
-		setIsLoading(false);
-	}, [taskListState]);
 
 	const requestEditTask = (id: number, newTitle: string) => {
 		setIsEditing(true);
@@ -60,20 +56,7 @@ export const useTasks = () => {
 			.finally(() => setIsDeleting(false));
 	};
 
-	const requestAddNewTask = (text: string) => {
-		setIsUploading(true);
-
-
-		
-		// fetchServer('POST', { title: text })
-		// 	.then((newTask: ITask) => setTaskList((prevTaskList) => [...prevTaskList, newTask]))
-		// 	.catch((e) => console.log(e))
-		// 	.finally(() => {
-		// 		setIsUploading(false);
-		// 	});
-	};
-
-	const requestChangeCompletion = (id: number, prevStatus: boolean) => {
+	const requestChangeCompletion = (id: string, prevStatus: boolean) => {
 		setIsUpdating(true);
 
 		fetchServer('PATCH', { id, completed: !prevStatus })
@@ -92,7 +75,6 @@ export const useTasks = () => {
 
 	const editTask = { requestEditTask, isEditing };
 	const deleteTask = { requestDeleteTask, isDeleting };
-	const addTask = { requestAddNewTask, isUploading };
 	const changeTaskCompletion = { requestChangeCompletion, isUpdating };
 
 	return {
@@ -101,7 +83,6 @@ export const useTasks = () => {
 		isLoading,
 		editTask,
 		deleteTask,
-		addTask,
 		changeTaskCompletion,
 	};
 };

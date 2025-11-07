@@ -3,7 +3,7 @@ import './StatusCheckbox.scss';
 interface IStatusCheckboxProps {
 	id: string;
 	status: boolean;
-	requestChangeCompletion: (id: number, status: boolean) => void;
+	requestChangeCompletion: (id: string, status: boolean) => void;
 	isUpdating: boolean;
 }
 
