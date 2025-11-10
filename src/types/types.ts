@@ -32,8 +32,14 @@ export type TSearchTaskListAction = {
 	type: 'taskList/Search';
 	payload: { query: string };
 };
+export type TFilterTaskListAction = {
+	type: 'taskList/Filter';
+	payload: { filter: string };
+};
+
 export type TAction =
 	| TLoadTaskListAction
 	| TAddTaskAction
 	| TSearchTaskListAction
-	| TDeleteTaskAction;
+	| TDeleteTaskAction
+	| TFilterTaskListAction;

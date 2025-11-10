@@ -2,8 +2,6 @@ import './TaskItem.scss';
 import { useNavigate } from 'react-router-dom';
 import DeleteTaskButton from '../UI/DeleteTaskButton';
 import StatusCheckbox from '../UI/StatusCheckbox';
-import { use } from 'react';
-import { TaskListContext } from '../../context/taskListContext.ts';
 
 interface ITaskItemProps {
 	id: string;

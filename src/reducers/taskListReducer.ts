@@ -13,6 +13,15 @@ export const taskListReducer = (
 			return [...state].filter((item: ITask) => {
 				return item.title.toLowerCase().includes(action.payload.query.toLowerCase());
 			});
+		case 'taskList/Filter':
+			let result = [...state];
+
+			switch (action.payload.filter) {
+				case 'alphabet':
+					result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+					break;
+			}
+			return result;
 		case 'taskList/AddNew':
 			return [...state, {...action.payload}];
 		default:

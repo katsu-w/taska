@@ -1,10 +1,27 @@
 import './styles/main.scss';
 import Header from './components/Header';
 import { AppRouter } from './components/AppRouter.tsx';
-import { useTasks } from './hooks';
+import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import type { TAppDispatch } from './types/types.ts';
+import { createLoadTaskListAction } from './actions';
 
 export function App() {
-	const { isLoading } = useTasks();
+
+	const [isLoading, setIsLoading] = useState<boolean>(true);
+
+	const dispatch: TAppDispatch = useDispatch();
+
+	useEffect(() => {
+		setIsLoading(true);
+		try {
+			dispatch(createLoadTaskListAction()).then(() => {
+				setIsLoading(false);
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}, []);
 
 	return (
 		<>
