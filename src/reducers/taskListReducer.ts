@@ -14,16 +14,21 @@ export const taskListReducer = (
 				return item.title.toLowerCase().includes(action.payload.query.toLowerCase());
 			});
 		case 'taskList/Filter':
-			let result = [...state];
+			let filterResult = [...state];
 
 			switch (action.payload.filter) {
 				case 'alphabet':
-					result.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+					filterResult.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
 					break;
 			}
-			return result;
+			return filterResult;
 		case 'taskList/AddNew':
 			return [...state, {...action.payload}];
+		case 'taskList/ChangeStatus':
+			let changeResult = [...state];
+			const changedIndex = changeResult.findIndex((item: ITask) => {if (item.id === action.payload.id) return true;})
+			changeResult[changedIndex].completed = !changeResult[changedIndex].completed;
+			return changeResult;
 		default:
 			return state;
 	}

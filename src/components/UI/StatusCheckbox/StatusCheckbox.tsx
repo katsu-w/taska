@@ -1,14 +1,28 @@
 import './StatusCheckbox.scss';
+import { useState } from 'react';
+import { fetchServer } from '../../../utils/utils.ts';
+import type { TAppDispatch } from '../../../types/types.ts';
+import { useDispatch } from 'react-redux';
+import { createChangeStatusAction } from '../../../actions';
 
 interface IStatusCheckboxProps {
 	id: string;
 	status: boolean;
-	requestChangeCompletion: (id: string, status: boolean) => void;
-	isUpdating: boolean;
 }
 
 export function StatusCheckbox(props: IStatusCheckboxProps) {
-	const { id, status, requestChangeCompletion, isUpdating } = props;
+	const { id, status } = props;
+
+	const [isUpdating, setIsUpdating] = useState(false);
+
+	const dispatch: TAppDispatch = useDispatch();
+
+	function handleChange() {
+		setIsUpdating(true);
+		fetchServer('PATCH', {id, completed: !status})
+			.then(() => dispatch(createChangeStatusAction(id)))
+			.finally(() => setIsUpdating(false));
+	}
 
 	return (
 		<input
@@ -18,7 +32,7 @@ export function StatusCheckbox(props: IStatusCheckboxProps) {
 			type="checkbox"
 			checked={status}
 			onClick={(e) => e.stopPropagation()}
-			onChange={() => requestChangeCompletion(id, status)}
+			onChange={handleChange}
 			disabled={isUpdating}
 		/>
 	);

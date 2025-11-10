@@ -27,6 +27,10 @@ export type TDeleteTaskAction = {
 	type: 'taskList/AddNew';
 	payload: { id: string };
 };
+export type TChangeStatusAction = {
+	type: 'taskList/ChangeStatus';
+	payload: { id: string };
+};
 
 export type TSearchTaskListAction = {
 	type: 'taskList/Search';
@@ -42,4 +46,5 @@ export type TAction =
 	| TAddTaskAction
 	| TSearchTaskListAction
 	| TDeleteTaskAction
+	| TChangeStatusAction
 	| TFilterTaskListAction;

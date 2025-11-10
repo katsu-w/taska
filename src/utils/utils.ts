@@ -9,7 +9,6 @@ export const fetchServer = async (method: string, { id, ...payload } = {}) => {
 
 	if (id !== undefined) {
 		url += `/${id}`;
-		console.log(url);
 		options.body = JSON.stringify(payload);
 	}
 
