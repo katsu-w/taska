@@ -26,7 +26,7 @@ export function DeleteTaskButton(props: IDeleteTaskButtonProps) {
 				e.stopPropagation();
 				setIsDeleting(true);
 				fetchServer('DELETE', { id }).then(() =>
-					dispatch(createLoadTaskListAction()).then(() => setIsDeleting(false)),
+					dispatch(createLoadTaskListAction()).finally(() => setIsDeleting(false)),
 				);
 
 				!homeMatch ? navigate('/') : null;

@@ -1,8 +1,9 @@
 import TaskDetailsLayout from './TaskDetailsLayout';
-import type { ITask } from '../../types/types.ts';
+import type { ITask, TAppDispatch } from '../../types/types.ts';
 import Loader from '../Loader';
-import { use, useState } from 'react';
-import { TaskListContext } from '../../context/taskListContext.ts';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { createEditTaskAction } from '../../actions';
 
 interface ITaskDetailsProps {
 	currentTask: ITask | undefined;
@@ -15,20 +16,27 @@ export function TaskDetails(props: ITaskDetailsProps) {
 		return <Loader />;
 	}
 
-	const { deleteTask, changeTaskCompletion, editTask } = use(TaskListContext);
 
 	const [newTitleTextValue, setNewTitleTextValue] = useState(currentTask.title);
 	const [showTextarea, setShowTextarea] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
+
+	const dispatch: TAppDispatch = useDispatch();
+
+	function requestEditTask(id: string): void {
+		setIsEditing(true);
+		try {
+			dispatch(createEditTaskAction(id, newTitleTextValue)).finally(() => setIsEditing(false));
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	return (
 		<TaskDetailsLayout
-			requestDeleteTask={deleteTask.requestDeleteTask}
 			currentTask={currentTask}
-			isDeleting={deleteTask.isDeleting}
-			requestChangeCompletion={changeTaskCompletion.requestChangeCompletion}
-			isUpdating={changeTaskCompletion.isUpdating}
-			requestEditTask={editTask.requestEditTask}
-			isEditing={editTask.isEditing}
+			requestEditTask={requestEditTask}
+			isEditing={isEditing}
 			newTitleTextValue={newTitleTextValue}
 			setNewTitleTextValue={setNewTitleTextValue}
 			showTextarea={showTextarea}

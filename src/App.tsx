@@ -15,7 +15,7 @@ export function App() {
 	useEffect(() => {
 		setIsLoading(true);
 		try {
-			dispatch(createLoadTaskListAction()).then(() => {
+			dispatch(createLoadTaskListAction()).finally(() => {
 				setIsLoading(false);
 			});
 		} catch (e) {

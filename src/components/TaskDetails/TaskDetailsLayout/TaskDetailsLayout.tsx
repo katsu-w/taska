@@ -6,11 +6,7 @@ import { type SetStateAction, useLayoutEffect, useRef } from 'react';
 
 interface ITaskDetailsLayoutProps {
 	currentTask: ITask;
-	requestDeleteTask: (id: number) => void;
-	isDeleting: boolean;
-	requestChangeCompletion: (id: number, status: boolean) => void;
-	isUpdating: boolean;
-	requestEditTask: (id: number, newTitle: string) => void;
+	requestEditTask: (id: string) => void;
 	isEditing: boolean;
 	newTitleTextValue: string;
 	setNewTitleTextValue: React.Dispatch<SetStateAction<string>>;
@@ -20,11 +16,7 @@ interface ITaskDetailsLayoutProps {
 
 export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 	const {
-		requestDeleteTask,
-		isDeleting,
 		currentTask,
-		requestChangeCompletion,
-		isUpdating,
 		requestEditTask,
 		isEditing,
 		newTitleTextValue,
@@ -43,13 +35,12 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 			textareaRef.current?.setSelectionRange(length, length);
 		}
 	}, [showTextarea]);
+
 	return (
 		<main className="task-details container">
 			<div className="task-details__controls">
 				<DeleteTaskButton
 					id={currentTask.id}
-					requestDeleteTask={requestDeleteTask}
-					isDeleting={isDeleting}
 					className="task-details__delete-btn"
 				/>
 				<button
@@ -65,8 +56,6 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 				<StatusCheckbox
 					id={currentTask.id}
 					status={currentTask.completed}
-					requestChangeCompletion={requestChangeCompletion}
-					isUpdating={isUpdating}
 				/>
 				{showTextarea ? (
 					<>
@@ -79,7 +68,7 @@ export function TaskDetailsLayout(props: ITaskDetailsLayoutProps) {
 						/>
 						<button
 							onClick={() => {
-								requestEditTask(currentTask.id, newTitleTextValue);
+								requestEditTask(currentTask.id);
 								setShowTextarea(false);
 							}}
 							disabled={isEditing}

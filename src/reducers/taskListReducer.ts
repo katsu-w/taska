@@ -24,6 +24,8 @@ export const taskListReducer = (
 			return filterResult;
 		case 'taskList/AddNew':
 			return [...state, {...action.payload}];
+		case 'taskList/EditTask':
+			return [...state].map((task: ITask) => task.id === action.payload.id ? action.payload  : task);
 		case 'taskList/ChangeStatus':
 			let changeResult = [...state];
 			const changedIndex = changeResult.findIndex((item: ITask) => {if (item.id === action.payload.id) return true;})
