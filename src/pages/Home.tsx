@@ -1,15 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TaskList from '../components/TaskList';
 import Modal from '../components/Modal';
+import type { TAppDispatch } from '../types/types.ts';
+import { useDispatch } from 'react-redux';
+import { createLoadTaskListAction } from '../actions';
 
-interface IHomeProps {
-	isLoading: boolean;
-}
+const Home = () => {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 
-const Home = (props: IHomeProps) => {
-	const { isLoading } = props;
+	const dispatch: TAppDispatch = useDispatch();
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	useEffect(() => {
+		setIsLoading(true);
+		try {
+			dispatch(createLoadTaskListAction()).finally(() => {
+				setIsLoading(false);
+			});
+		} catch (e) {
+			console.log(e);
+		}
+	}, []);
 
 	return (
 		<>

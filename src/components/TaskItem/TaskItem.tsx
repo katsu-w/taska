@@ -17,16 +17,10 @@ export function TaskItem(props: ITaskItemProps) {
 	return (
 		<div className="task" onClick={() => navigate(`/task/${id}`)}>
 			<div className="task__details">
-				<StatusCheckbox
-					id={id}
-					status={status}
-				/>
+				<StatusCheckbox id={id} status={status} />
 				<p className="task__title">{title}</p>
 			</div>
-			<DeleteTaskButton
-				id={id}
-				className="remove-btn"
-			/>
+			<DeleteTaskButton id={id} className="remove-btn" />
 		</div>
 	);
 }

@@ -14,10 +14,6 @@ export function TaskList(props: ITaskListProps) {
 	const taskList = useSelector(taskListSelector);
 
 	return (
-		<TaskListLayout
-			openModal={openModal}
-			filteredData={taskList}
-			isLoading={isLoading}
-		/>
+		<TaskListLayout openModal={openModal} filteredData={taskList} isLoading={isLoading} />
 	);
 }

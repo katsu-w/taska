@@ -33,7 +33,7 @@ export type TChangeStatusAction = {
 };
 export type TEditTaskAction = {
 	type: 'taskList/EditTask';
-	payload: { id: string, newTitle: string };
+	payload: { id: string; newTitle: string };
 };
 
 export type TSearchTaskListAction = {

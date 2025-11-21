@@ -4,7 +4,7 @@ import type { ThunkActionDispatch } from 'redux-thunk';
 
 export const createAddNewTaskAction =
 	(text: string) => (dispatch: ThunkActionDispatch<any>) =>
-		fetchServer('POST', { title: text}).then((newTask: ITask) => {
+		fetchServer('POST', { title: text }).then((newTask: ITask) => {
 			dispatch({
 				type: 'taskList/AddNew',
 				payload: { ...newTask },

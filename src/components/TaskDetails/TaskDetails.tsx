@@ -16,7 +16,6 @@ export function TaskDetails(props: ITaskDetailsProps) {
 		return <Loader />;
 	}
 
-
 	const [newTitleTextValue, setNewTitleTextValue] = useState(currentTask.title);
 	const [showTextarea, setShowTextarea] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
@@ -26,7 +25,9 @@ export function TaskDetails(props: ITaskDetailsProps) {
 	function requestEditTask(id: string): void {
 		setIsEditing(true);
 		try {
-			dispatch(createEditTaskAction(id, newTitleTextValue)).finally(() => setIsEditing(false));
+			dispatch(createEditTaskAction(id, newTitleTextValue)).finally(() =>
+				setIsEditing(false),
+			);
 		} catch (error) {
 			console.log(error);
 		}
